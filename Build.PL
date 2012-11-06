@@ -16,6 +16,8 @@ my $builder = Module::Build->new(
     },
     requires => {
         'perl'               => 5.006,
+        'Params::Validate'   => 0,
+        'Readonly'           => 0,
         'WebService::Simple' => 0,
     },
     add_to_cleanup      => [ 'WebService-Scriptogram-*' ],
