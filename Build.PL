@@ -14,11 +14,21 @@ my $builder = Module::Build->new(
         'Test::Pod::Coverage' => 1.04,
         'Test::Pod'           => 1.14,
     },
+    configure_requires => {
+        'Module::Build' => 0.40,
+    },
     requires => {
         'perl'               => 5.006,
         'Params::Validate'   => 0,
         'Readonly'           => 0,
         'WebService::Simple' => 0,
+    },
+    meta_merge => {
+        resources => {
+            homepage   => 'https://github.com/hakamadare/webservice-scriptogram',
+            bugtracker => 'http://rt.cpan.org/NoAuth/ReportBug.html?Queue=WebService-Scriptogram',
+            repository => 'git://github.com/hakamadare/webservice-scriptogram.git',
+        },
     },
     add_to_cleanup      => [ 'WebService-Scriptogram-*' ],
     create_makefile_pl => 'traditional',
