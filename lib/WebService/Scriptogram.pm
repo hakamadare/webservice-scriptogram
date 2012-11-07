@@ -20,12 +20,12 @@ See <http://scriptogr.am/dashboard#api_documentation> for authoritative document
 
 =head1 VERSION
 
-Version v0.0.1
+Version v0.0.2
 
 =cut
 
 # constants
-use version; our $VERSION = 'v0.0.1';
+use version; our $VERSION = 'v0.0.2';
 
 Readonly my $SCRIPTOGRAM_API => 'http://scriptogr.am/api';
 
@@ -42,29 +42,52 @@ __PACKAGE__->config(
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
-
     use WebService::Scriptogram;
+
+    my $sg = WebService::Scriptogram->new;
 
     my $text = <<TEXT;
     **Hello, World!**
 
-    First post!  I'm using [WebService::Scriptogram](https://github.com/hakamadare/webservice-scriptogram).
+    First post!
+
+    I'm using [WebService::Scriptogram](https://github.com/hakamadare/webservice-scriptogram).
     TEXT
 
-    my %params = (
+    my $status = $sg->article(
         app_key => 'Scriptogr.am App Key',
         user_id => 'Scriptogr.am User ID',
         name => 'My First API Post',
         text => $text,
     );
 
+Each method corresponds to an API call; methods accept a hash of parameters, and return a hashref representing the status returned by the API (see Scriptogr.am API documentation for an explanation of status values).
 
 =head1 METHODS
 
 =head2 article
+
+Post a new article or edit an existing article.  Accepts the following parameters:
+
+=over
+
+=item app_key
+
+Scriptogr.am API key.  Register an application with Scriptogr.am to obtain one.
+
+=item user_id
+
+Scriptogr.am user ID.  Get this from the settings pane of the Scriptogr.am dashboard.
+
+=item name
+
+Title of the article as you would like it to appear on your blog.
+
+=item text
+
+(Optional) text of the article, in Markdown format.
+
+=back
 
 =cut
 
@@ -101,6 +124,28 @@ sub article {
 }
 
 =head2 delete
+
+Delete an existing article.  Accepts the following parameters:
+
+=over
+
+=item app_key
+
+Scriptogr.am API key.  Register an application with Scriptogr.am to obtain one.
+
+=item user_id
+
+Scriptogr.am user ID.  Get this from the settings pane of the Scriptogr.am dashboard.
+
+=item filename
+
+Name of the file as it appears in your Dropbox folder.
+
+=item text
+
+(Optional) text of the article, in Markdown format.
+
+=back
 
 =cut
 
@@ -173,6 +218,7 @@ L<http://search.cpan.org/dist/WebService-Scriptogram/>
 
 =head1 ACKNOWLEDGEMENTS
 
+Thanks to the fine folks at #crimsonfu for bringing Scriptogr.am to my attention.
 
 =head1 LICENSE AND COPYRIGHT
 
