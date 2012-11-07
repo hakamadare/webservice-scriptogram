@@ -20,12 +20,12 @@ See <http://scriptogr.am/dashboard#api_documentation> for authoritative document
 
 =head1 VERSION
 
-Version v0.0.2
+Version v0.0.3
 
 =cut
 
 # constants
-use version; our $VERSION = 'v0.0.2';
+use version; our $VERSION = 'v0.0.3';
 
 Readonly my $SCRIPTOGRAM_API => 'http://scriptogr.am/api';
 
@@ -51,7 +51,7 @@ __PACKAGE__->config(
 
     First post!
 
-    I'm using [WebService::Scriptogram](https://github.com/hakamadare/webservice-scriptogram).
+    I'm using [WebService::Scriptogram](http://search.cpan.org/dist/WebService-Scriptogram/).
     TEXT
 
     my $status = $sg->article(
